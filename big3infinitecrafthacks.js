@@ -1,8 +1,9 @@
 // ==UserScript==
-// @name         Big3
+// @name         Pytems
+// @namespace    https://py9.dev/
 // @version      1.1.0
-// @description  Big3 Hacked Client!
-// @author       Big3
+// @description  Create & Manage Items in Infinite Craft with an Easy to use Menu!
+// @author       Py9
 // @match        https://neal.fun/infinite-craft/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neal.fun
 // @grant        none
@@ -12,18 +13,18 @@
     const version = '1.1.0';
     var updateAvailable = false;
     let checkVersion = async () => {
-        let response = await fetch('');
+        let response = await fetch('https://raw.githubusercontent.com/Proyo9/Infinite-Hack/main/version.txt');
         let text = await response.text();
         let latestVersion = text.trim();
         if (compareVersions(version, latestVersion) === -1) {
             updateAvailable = true;
-            document.getElementById('big3-update').innerText = `Update (v${latestVersion})`;
-            document.getElementById('big3-update').style.display = 'flex';
-            console.log('%cYour Big3 is not up to date, get the latest update from: %c', 'color: red; font-weight: bold;', 'color: blue; text-decoration: underline;');
+            document.getElementById('pytems-update').innerText = `Update (v${latestVersion})`;
+            document.getElementById('pytems-update').style.display = 'flex';
+            console.log('%cYour is not up to date, get the latest update from: %c', 'color: red; font-weight: bold;', 'color: blue; text-decoration: underline;');
             let items = document.querySelectorAll('.item');
             /*items.forEach(item => {
-                if (item.textContent.includes('Thank you for using the Big 3 Hacked Client')) {
-                    item.innerHTML = `<span data-v-adfd717a="" class="item-emoji">💻</span> Big3 Update Available (v${latestVersion})`;
+                if (item.textContent.includes('Thank you for using Pytems')) {
+                    item.innerHTML = `<span data-v-adfd717a="" class="item-emoji">❗</span> Big3 Update Available (v${latestVersion})`;
                 }
             });*/
         }
@@ -48,7 +49,7 @@
     script.src = 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js';
     script.type = 'module';
     document.head.appendChild(script);
-    let ht = localStorage.getItem('big:hidethanks');
+    let ht = localStorage.getItem('pytems:hidethanks');
     let items = localStorage.getItem('infinite-craft-data')
     if (items === null) {
         items = {"elements":[{"text":"Water","emoji":"💧","discovered":false},{"text":"Fire","emoji":"🔥","discovered":false},{"text":"Wind","emoji":"🌬️","discovered":false},{"text":"Earth","emoji":"🌍","discovered":false}]}
@@ -56,11 +57,11 @@
         items = JSON.parse(items)
     }
     if (ht && !updateAvailable) {
-        items.elements = items.elements.filter(e => e.text !== 'Thank you for using the Big 3 Hacked Client!');
+        items.elements = items.elements.filter(e => e.text !== 'Thank you for using Pytems');
         localStorage.setItem('infinite-craft-data', JSON.stringify(items));
     } else {
         localStorage.setItem('infinite-craft-data', JSON.stringify(items))
-        let thanks = {"text":"hank you for using the Big 3 Hacked Client!","emoji":"💻","discovered":false}
+        let thanks = {"text":"Thank you for using Big 3 Hacks","emoji":"💻","discovered":false}
         if (!items.elements.some(e => e.text === thanks.text)) {
             items.elements.unshift(thanks)
     
@@ -68,7 +69,7 @@
         localStorage.setItem('infinite-craft-data', JSON.stringify(items))
     }
 
-    let cheatsDisabled = localStorage.getItem('big3:cheats');
+    let cheatsDisabled = localStorage.getItem('pytems:cheats');
  
     let buttonContainer = document.createElement('div');
     buttonContainer.style.display = 'flex';
@@ -76,10 +77,10 @@
     document.body.appendChild(buttonContainer);
  
     let createButton = document.createElement('button');
-    createButton.textContent = Invent Item';
+    createButton.textContent = 'Create Item';
     createButton.style.zIndex = 1000000;
     createButton.style.padding = '10px 20px';
-    createButton.style.backgroundColor = '#62D9BF';
+    createButton.style.backgroundColor = '#4CAF50';
     createButton.style.color = 'white';
     createButton.style.border = 'none';
     createButton.style.borderRadius = '5px';
@@ -305,9 +306,9 @@
     createItemMenu.appendChild(createItemDiscovered);
  
     let createItemSubmit = document.createElement('button');
-    createItemSubmit.textContent = Invent Item';
+    createItemSubmit.textContent = 'Create Item';
     createItemSubmit.style.padding = '10px 20px';
-    createItemSubmit.style.backgroundColor = '#62D9BF';
+    createItemSubmit.style.backgroundColor = '#4CAF50';
     createItemSubmit.style.color = 'white';
     createItemSubmit.style.border = 'none';
     createItemSubmit.style.borderRadius = '5px';
@@ -381,10 +382,10 @@
     updateButton.style.marginLeft = '10px';
     updateButton.style.marginTop = '10px';
     updateButton.style.display = 'none';
-    updateButton.id = 'big3-update';
+    updateButton.id = 'pytems-update';
     buttonContainer.appendChild(updateButton);
     updateButton.addEventListener('click', function() {
-        window.open('', '_blank');
+        window.open('https://raw.githubusercontent.com/airtaticnova/airtaticnova/main/big3infinitecrafthacks.js', '_blank');
     });
 
     let settingsMenu = document.createElement('div');
@@ -406,15 +407,15 @@
 
     settingsMenu.innerHTML = `
     <style>
-    #big3-github {
+    #pytems-github {
         margin-top: 10px;
         color: #2196F3;
         text-decoration: none;
     }
-    #big3-github:hover {
+    #pytems-github:hover {
         text-decoration: underline;
     }
-    #big3-settings-close {
+    #pytems-settings-close {
         margin-top: 10px;
         padding: 10px 20px;
         background-color: #f44336;
@@ -423,41 +424,41 @@
         border-radius: 5px;
         cursor: pointer;
     }
-    #big3-settings-close:hover {
+    #pytems-settings-close:hover {
         background-color: #ff6666;
     }
     .checkbox-info {
         margin-top: 10px;
     }
-    .big3-label {
+    .pytems-label {
         margin-left: 10px;
     }
     </style>
-    <h1>Big3 Settings</h1>
-    <span class="checkbox-info"><input type="checkbox" id="big3-setting-hidethanks"></input><label for="big3-setting-hidethanks" class="big3-label">Hide Thanks Item</label></span>
-    <span class="checkbox-info"><input type="checkbox" id="big3-setting-cheats"></input><label for="big3-setting-cheats" class="big3-label">Disable Cheats</label></span>
-    <a href="" target="_blank" id="big3-github">GitHub</a>
-    <button id="big3-settings-close">Close</button>
+    <h1>Pytems Settings</h1>
+    <span class="checkbox-info"><input type="checkbox" id="pytems-setting-hidethanks"></input><label for="pytems-setting-hidethanks" class="pytems-label">Hide Thanks Item</label></span>
+    <span class="checkbox-info"><input type="checkbox" id="pytems-setting-cheats"></input><label for="pytems-setting-cheats" class="pytems-label">Disable Cheats</label></span>
+    <a href="https://github.com/Proyo9/Infinite-Hack/" target="_blank" id="pytems-github">GitHub</a>
+    <button id="pytems-settings-close">Close</button>
     `;
 
-    let settingsClose = document.getElementById('big3-settings-close');
+    let settingsClose = document.getElementById('pytems-settings-close');
     settingsClose.addEventListener('click', function() {
         // save settings
-        let hideThanks = document.getElementById('big3-setting-hidethanks').checked;
-        hideThanks ? localStorage.setItem('big3:hidethanks', hideThanks) : localStorage.removeItem('big3:hidethanks');
-        let cheats = document.getElementById('big3-setting-cheats').checked;
-        cheats ? localStorage.setItem('big3:cheats', cheats) : localStorage.removeItem('big3:cheats');
+        let hideThanks = document.getElementById('pytems-setting-hidethanks').checked;
+        hideThanks ? localStorage.setItem('pytems:hidethanks', hideThanks) : localStorage.removeItem('pytems:hidethanks');
+        let cheats = document.getElementById('pytems-setting-cheats').checked;
+        cheats ? localStorage.setItem('pytems:cheats', cheats) : localStorage.removeItem('pytems:cheats');
 
         window.location.reload();
     });
 
-    let hideThanks = localStorage.getItem('big3:hidethanks');
+    let hideThanks = localStorage.getItem('pytems:hidethanks');
     if (hideThanks) {
-        document.getElementById('big3-setting-hidethanks').checked = true;
+        document.getElementById('pytems-setting-hidethanks').checked = true;
     }
-    let cheats = localStorage.getItem('big3:cheats');
+    let cheats = localStorage.getItem('pytems:cheats');
     if (cheats) {
-        document.getElementById('big3-setting-cheats').checked = true;
+        document.getElementById('pytems-setting-cheats').checked = true;
     }
 
     let saveManagerMenu = document.createElement('div');
@@ -479,7 +480,7 @@
 
     const styles = `
     <style>
-        #big3-save-close {
+        #pytems-save-close {
             margin-top: 10px;
             padding: 10px 20px;
             background-color: #f44336;
@@ -488,10 +489,10 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        #big3-save-close:hover {
+        #pytems-save-close:hover {
             background-color: #ff6666;
         }
-        .big3-label {
+        .pytems-label {
             margin-left: 10px;
         }
         .select-sm,
@@ -506,7 +507,7 @@
         }
         .button-sm {
             padding: 10px 20px;
-            background-color:#62D9BF;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
@@ -529,39 +530,39 @@
 
     const saveData = (saveName) => {
         const saveData = localStorage.getItem('infinite-craft-data');
-        localStorage.setItem(`big3-save:${saveName}`, saveData);
+        localStorage.setItem(`pytems-save:${saveName}`, saveData);
         saveManagerMenu.style.display = 'none';
         reloadPage();
     };
 
     const loadData = (saveName) => {
         if (saveName === '') return;
-        const saveData = localStorage.getItem(`big3-save:${saveName}`);
+        const saveData = localStorage.getItem(`pytems-save:${saveName}`);
         localStorage.setItem('infinite-craft-data', saveData);
         reloadPage();
     };
 
     const deleteData = (saveName) => {
-        localStorage.removeItem(`big3-save:${saveName}`);
+        localStorage.removeItem(`pytems-save:${saveName}`);
         reloadPage();
     };
 
     renderSaveManagerMenu('Save Manager', `
         <p>This feature is in beta, there are a lot of UI bugs</p>
-        <select id="big3-sm-type" style="margin-bottom: 10px;" class="select-sm">
+        <select id="pytems-sm-type" style="margin-bottom: 10px;" class="select-sm">
             <option value="save">Save</option>
             <option value="load">Load</option>
             <option value="delete">Delete</option>
         </select>
         <span class="sm-buttons">
-            <button id="big3-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
-            <button id="big3-sm-next" class="button-sm">Next</button>
+            <button id="pytems-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
+            <button id="pytems-sm-next" class="button-sm">Next</button>
         </span>
     `);
 
-    const smType = document.getElementById('big3-sm-type');
-    const smNext = document.getElementById('big3-sm-next');
-    const smCancel = document.getElementById('big3-sm-Cancel');
+    const smType = document.getElementById('pytems-sm-type');
+    const smNext = document.getElementById('pytems-sm-next');
+    const smCancel = document.getElementById('pytems-sm-Cancel');
 
     smCancel.addEventListener('click', reloadPage);
 
@@ -569,59 +570,59 @@
         const type = smType.value;
         if (type === 'save') {
             renderSaveManagerMenu('Save Manager', `
-                <input type="text" id="big3-sm-save-name" placeholder="Save Name" style="margin-bottom: 10px;" class="input-sm">
+                <input type="text" id="pytems-sm-save-name" placeholder="Save Name" style="margin-bottom: 10px;" class="input-sm">
                 <span class="sm-buttons">
-                    <button id="big3-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
-                    <button id="big3-sm-save" class="button-sm">Save</button>
+                    <button id="pytems-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
+                    <button id="pytems-sm-save" class="button-sm">Save</button>
                 </span>
             `);
-            const smSave = document.getElementById('big3-sm-save');
+            const smSave = document.getElementById('pytems-sm-save');
             smSave.addEventListener('click', () => {
-                const saveName = document.getElementById('big3-sm-save-name').value;
+                const saveName = document.getElementById('pytems-sm-save-name').value;
                 saveData(saveName);
             });
         } else if (type === 'load') {
-            const saveNames = Object.keys(localStorage).filter(key => key.startsWith('big3-save:')).map(key => key.replace('big3-save:', ''));
+            const saveNames = Object.keys(localStorage).filter(key => key.startsWith('pytems-save:')).map(key => key.replace('pytems-save:', ''));
             renderSaveManagerMenu('Save Manager', `
-                <select id="big3-sm-save-name" style="margin-bottom: 10px;" class="select-sm">
+                <select id="pytems-sm-save-name" style="margin-bottom: 10px;" class="select-sm">
                     ${saveNames.map(name => `<option value="${name}">${name}</option>`).join('')}
                 </select>
                 <span class="sm-buttons">
-                    <button id="big3-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
-                    <button id="big3-sm-load" class="button-sm">Load</button>
+                    <button id="pytems-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
+                    <button id="pytems-sm-load" class="button-sm">Load</button>
                 </span>
             `);
-            const smLoad = document.getElementById('big3-sm-load');
+            const smLoad = document.getElementById('pytems-sm-load');
             smLoad.addEventListener('click', () => {
-                const saveName = document.getElementById('big3-sm-save-name').value;
+                const saveName = document.getElementById('pytems-sm-save-name').value;
                 loadData(saveName);
             });
         } else if (type === 'delete') {
-            const saveNames = Object.keys(localStorage).filter(key => key.startsWith('big3-save:')).map(key => key.replace('big3-save:', ''));
+            const saveNames = Object.keys(localStorage).filter(key => key.startsWith('pytems-save:')).map(key => key.replace('pytems-save:', ''));
             renderSaveManagerMenu('Save Manager', `
-                <select id="big3-sm-save-name" style="margin-bottom: 10px;" class="select-sm">
+                <select id="pytems-sm-save-name" style="margin-bottom: 10px;" class="select-sm">
                     ${saveNames.map(name => `<option value="${name}">${name}</option>`).join('')}
                 </select>
                 <span class="sm-buttons">
-                    <button id="big3-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
-                    <button id="big3-sm-delete" class="button-sm">Delete</button>
+                    <button id="pytems-sm-Cancel" class="button-sm" style="background-color: #f44336;">Cancel</button>
+                    <button id="pytems-sm-delete" class="button-sm">Delete</button>
                 </span>
             `);
-            const smDelete = document.getElementById('big3-sm-delete');
+            const smDelete = document.getElementById('pytems-sm-delete');
             smDelete.addEventListener('click', () => {
-                const saveName = document.getElementById('big3-sm-save-name').value;
+                const saveName = document.getElementById('pytems-sm-save-name').value;
                 deleteData(saveName);
             });
         }
         smCancel.addEventListener('click', reloadPage);
     });
 
-    let darkmodesetting = localStorage.getItem('big3:darkmode');
+    let darkmodesetting = localStorage.getItem('pytems:darkmode');
     if (darkmodesetting) {
         setTimeout(() => {
             // darkmode
             let customstyle = document.createElement('style');
-            customstyle.id = 'big3-style';
+            customstyle.id = 'pytems-style';
             customstyle.innerHTML = `
             body {
                 color: white !important;
@@ -680,7 +681,7 @@
             let emojiPicker = document.querySelector('emoji-picker');
             emojiPicker.classList.add('dark');
             createButton.style.backgroundColor = 'transparent';
-            createButton.style.border = 'solid 2px #62D9BF';
+            createButton.style.border = 'solid 2px #4CAF50';
             deleteButton.style.backgroundColor = 'transparent';
             deleteButton.style.border = 'solid 2px #f44336';
             magicCreateButton.style.backgroundColor = 'transparent';
@@ -730,11 +731,11 @@
         sideControls.innerHTML = darkmodeToggle + settingsToggle + saveManager + sideControls.innerHTML;
         let darkmodeButton = document.getElementById('darkmodetoggle');
         darkmodeButton.addEventListener('click', function() {
-            if (localStorage.getItem('big3:darkmode')) {
-                localStorage.removeItem('big3:darkmode');
+            if (localStorage.getItem('pytems:darkmode')) {
+                localStorage.removeItem('pytems:darkmode');
                 location.reload();
             } else {
-                localStorage.setItem('big3:darkmode', 'true');
+                localStorage.setItem('pytems:darkmode', 'true');
                 location.reload();
             }
         });
