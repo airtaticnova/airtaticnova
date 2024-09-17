@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Pytems
+// @name         Big 3 (Help from pytems)
 // @namespace    https://py9.dev/
 // @version      1.1.0
 // @description  Create & Manage Items in Infinite Craft with an Easy to use Menu!
